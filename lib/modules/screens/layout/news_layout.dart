@@ -17,18 +17,22 @@ class NewsLayout extends StatelessWidget {
             title: const Text('News App'),
             actions: [
               IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SearchScreen()));
-                  },
-                  icon: const Icon(Icons.search)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.search),
+              ),
               IconButton(
-                  onPressed: () {
-                    cubit.changeAppMode();
-                  },
-                  icon: const Icon(Icons.brightness_4_outlined)),
+                onPressed: () {
+                  cubit.changeAppMode();
+                },
+                icon: const Icon(Icons.dark_mode),
+              ),
             ],
           ),
           body: cubit.screens[cubit.currentIndex],

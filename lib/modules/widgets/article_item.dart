@@ -1,48 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/utils/helper.dart';
+import 'package:news_app/models/news_model.dart';
 import 'package:news_app/modules/screens/web_view.dart';
 
-Widget buildArticleItem(article, context) => InkWell(
+Widget buildArticleItem(NewsModel article, BuildContext context) => InkWell(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => WebViewScreen(newsUrl: article['url'])));
+          context,
+          MaterialPageRoute(
+            builder: (context) => WebViewScreen(newsUrl: article.url),
+          ),
+        );
       },
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
+      child: Container(
+        height: context.height * 0.19,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Row(
           children: [
             Container(
-              width: 120,
-              height: 120,
+              width: context.width * 0.3,
+              height: context.height * 0.17,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      image: NetworkImage(article['urlToImage'] ??
-                          'https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp'),
-                      fit: BoxFit.cover)),
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                    image: NetworkImage(article.urlToImage), fit: BoxFit.cover),
+              ),
             ),
-            const SizedBox(
-              width: 20,
-            ),
+            const SizedBox(width: 10),
             Expanded(
-              child: SizedBox(
-                height: 120,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      article.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        height: 1.1,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
                     Expanded(
                       child: Text(
-                        article['title'] ??
-                            'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        article.description,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          height: 1.1,
+                          color: Colors.grey,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                     Text(
-                      article['publishedAt'] ?? 'lol',
+                      Helper.formatDate(article.publishedAt),
                       style: const TextStyle(color: Colors.grey),
                     ),
                   ],
