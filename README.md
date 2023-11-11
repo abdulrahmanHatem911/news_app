@@ -54,3 +54,13 @@ Maktabty is released under the MIT License. See the [LICENSE](LICENSE) file for 
     <img src="https://img.shields.io/badge/YouTube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="Youtube Badge"/>
   </a>
 </div>
+
+## Watch the Demo
+
+Check out the demo video by clicking the link below:
+
+[![Watch the Demo](https://img.youtube.com/vi/69Ai5XB1Vd4/0.jpg)](assets/videos/multiKate.mp4)
+
+Alternatively, you can download the video directly:
+
+- [Download Demo Video](assets/videos/multiKate.mp4)
